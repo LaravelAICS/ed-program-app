@@ -308,15 +308,15 @@ export default function Index({ auth, model, queryParams = null }) {
             </div>
 
             {/* Delete Confirmation Dialog */}
-            <Dialog open={dialogConfig.open} onOpenChange={onDialogConfig}>
-    <DialogContent>
+             <Dialog open={dialogConfig.open} onOpenChange={onDialogConfig}>
+            <DialogContent className="sm:max-w-[600px] dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-none">
         <DialogHeader>
             <DialogTitle>
                 {dialogConfig.process === "delete"
-                    ? "Are you sure you want to delete this program?"
+                    ? "Are you sure you want to delete this Information?"
                     : dialogConfig.process === "view"
-                    ? "Program Details"
-                    : "Update Program"}
+                    ? "Information Details"
+                    : "Update Info"}
             </DialogTitle>
         </DialogHeader>
         {dialogConfig.process === "delete" && (
@@ -335,11 +335,14 @@ export default function Index({ auth, model, queryParams = null }) {
                 </button>
             </div>
         )}
-        {dialogConfig.process === "view" && <Show data={dialogConfig.data} />}
+        {dialogConfig.process === "view" &&
+        <Show model={dialogConfig.data}
+        onDialogConfig={onDialogConfig} />}
         {dialogConfig.process === "update" && (
             <Update
-                data={dialogConfig.data}
-                onClose={() => onDialogConfig()}
+            model={dialogConfig.data}
+            onDialogConfig={onDialogConfig}
+            params={queryParams}
             />
         )}
     </DialogContent>

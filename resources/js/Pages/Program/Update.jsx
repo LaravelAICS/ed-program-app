@@ -69,20 +69,18 @@ const Update = ({ model, onDialogConfig, params }) => {
 
                 {/* prettier-ignore */}
                 <div className="flex justify-end space-x-3">
-                    {processing
-                        ? (
-                            <Button disabled className="rounded-full w-40">
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Updating...
-                            </Button>
-                        )
-                        : (
-                            <Button
-                                type="submit"
-                                className="bg-blue-600 hover:bg-blue-500 rounded-full w-40"
-                            >
-                                Save
-                            </Button>
+                {processing ? (
+                <Button disabled className="rounded-full w-40 flex items-center">
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Updating...
+                </Button>
+            ) : (
+                <Button
+                    type="submit"
+                    className="bg-blue-600 hover:bg-blue-500 rounded-full w-40"
+                >
+                    Save
+                </Button>
                         )
                     }
 
